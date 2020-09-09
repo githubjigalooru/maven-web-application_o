@@ -111,6 +111,14 @@
 	    </snapshotRepository>
 	    
 	</distributionManagement>
+	
+	<repositories>
+		<repository>
+		<id>nexus</id>
+			<url>http://15.207.249.146:8081/repository/wallmart_repo_proxy/</url>
+		</repository>
+	</repositories>
+	
 	<build>
 		<finalName>maven-web-application</finalName>
 		
