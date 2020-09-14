@@ -35,6 +35,12 @@ pipeline {
                 
             }
         }
+        stage("container_run") {
+            steps {
+               sh "docker run -d -p 8080:8080 --name container1 ravikumara0004/app2:${BUILD_NUMBER}"
+                }
+                
+        }
         
     }
 }
