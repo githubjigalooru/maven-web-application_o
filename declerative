@@ -1,0 +1,40 @@
+pipeline {
+    agent any 
+    environment {
+        PATH = "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_Home.3.6.3/bin:$PATH"
+
+    }
+    stages {
+        stage("scm_checkout") {
+           steps {
+             git branch: 'stage', credentialsId: 'github_id', url: 'https://github.com/githubjigalooru/maven-web-application.git'   
+            }
+        }
+        stage("build_artifact") {
+            steps {
+             sh "mvn clean install"
+                
+            }
+        }
+        stage("push_artifact_to_Nexus"){
+            steps {
+             sh "mvn clean deploy"
+            }
+        }
+        stage("build_image") {
+            steps {
+              sh "docker build -t ravikumara0004/app2:${BUILD_NUMBER} ."
+            }
+        }
+        stage("Image_push_dockerhub") {
+            steps {
+               withCredentials([string(credentialsId: 'docker', variable: 'docker')]){
+                sh "docker login -u ravikumara0004 -p ${docker_hub}"
+                }
+              sh "docker push ravikumara0004/app2:${BUILD_NUMBER}"
+                
+            }
+        }
+        
+    }
+}
