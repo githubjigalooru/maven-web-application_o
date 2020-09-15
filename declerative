@@ -1,4 +1,4 @@
-properties([pipelineTriggers([pollSCM('* * * * *')])])
+properties([parameters([choice(choices: ['development', 'stage', 'master'], description: 'parametaraised pipeline on branch', name: 'branch')]), pipelineTriggers([pollSCM('* * * * *')])])
 pipeline {
     agent any 
     
