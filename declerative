@@ -1,7 +1,6 @@
 pipeline {
     agent any 
     properties([pipelineTriggers([pollSCM('* * * * *')])])
-      }
     environment {
         PATH = "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_Home.3.6.3/bin:$PATH"
 
