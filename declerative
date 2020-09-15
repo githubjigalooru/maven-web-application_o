@@ -37,7 +37,7 @@ pipeline {
         }
         stage("container_run") {
             steps {
-               sh "docker rm container2 || true"
+               sh "docker rm -f container2 || true"
                sh "docker run -d -p 8080:8080 --name container2 ravikumara0004/app2:${BUILD_NUMBER}"
                 }
                 
