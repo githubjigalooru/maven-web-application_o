@@ -18,7 +18,7 @@ pipeline {
         }
         stage("build_artifact") {
             steps {
-             sh "mvn clean install"
+             sh "mvn clean package"
                 
             }
         }
