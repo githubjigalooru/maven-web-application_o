@@ -20,7 +20,7 @@ pipeline {
                 
             }
         }
-        stage(docker test") {
+        stage("docker test") {
          steps {
            sh "docker -version"
            sh "echo docker is installed"
