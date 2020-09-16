@@ -20,6 +20,12 @@ pipeline {
                 
             }
         }
+        stage(docker test") {
+         steps {
+           sh "docker -version"
+           sh "echo docker is installed"
+           }
+          }
       /* stage("push_artifact_to_Nexus"){
             steps {
              sh "mvn clean deploy"
