@@ -1,6 +1,8 @@
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
 pipeline {
-    agent any
+    agent any{
+    label "slave"
+    }
     tools {
     maven 'Maven_Home.3.6.3'
     }
