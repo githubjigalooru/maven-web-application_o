@@ -1,6 +1,8 @@
 properties([pipelineTriggers([pollSCM('* * * * *')])])
 pipeline {
-    agent any
+    agent {
+    label "slave"
+    }
     tools {
     maven 'Maven_Home.3.6.3'
     }
