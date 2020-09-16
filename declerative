@@ -26,8 +26,7 @@ pipeline {
              sh "mvn clean deploy"
             }
         }*/
-        stage("build_image") {
-            steps {
+/*            steps {
               sh "docker build -t ravikumara0004/app2:${BUILD_NUMBER} ."
             }
         }
@@ -49,7 +48,7 @@ pipeline {
                sh "docker run -d -p 8080:8080 --name container2 ravikumara0004/app2:${BUILD_NUMBER}"
                 }
                 
-        }
+        }   */
         
     }
 }
