@@ -7,10 +7,10 @@ pipeline {
     maven 'Maven_Home.3.6.3'
     }
     
-    environment {
+   /* environment {
         PATH = "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_Home.3.6.3/bin:$PATH"
 
-    }
+    }*/
     stages {
         stage("scm_checkout") {
            steps {
