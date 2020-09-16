@@ -17,13 +17,13 @@ pipeline {
              git branch: 'stage', credentialsId: 'github_id', url: 'https://github.com/githubjigalooru/maven-web-application.git'   
             }
         }
-     /*   stage("build_artifact") {
+        stage("build_artifact") {
             steps {
              sh "mvn clean package"
                 
             }
         }
-       stage("push_artifact_to_Nexus"){
+      /* stage("push_artifact_to_Nexus"){
             steps {
              sh "mvn clean deploy"
             }
