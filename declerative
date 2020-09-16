@@ -3,6 +3,9 @@ pipeline {
     agent {
     label 'slave'
     }
+    tools {
+    maven 'Maven_Home.3.6.3'
+    }
     
     environment {
         PATH = "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_Home.3.6.3/bin:$PATH"
