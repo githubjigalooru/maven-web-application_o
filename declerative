@@ -34,7 +34,7 @@ pipeline {
              }
           }
       stage ("dockerimage_build") {
-        stpes {	 
+        steps {	 
 	 script {
                     def customImage = docker.build("amruth0005/mavenpro:${env.BUILD_ID}")
                   }
