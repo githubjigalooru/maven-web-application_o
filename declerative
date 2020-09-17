@@ -5,6 +5,48 @@ pipeline {
     maven 'Maven_Home.3.6.3'
     dockerTool 'docker'
     }
+	environment{
+	imagename = amruth0005/app1
+	registryCredential = "Ravikj005@"
+	dockerimage = ""
+	}
+    stages {
+        stage("scm_checkout") {
+           steps {
+             git branch: 'stage', credentialsId: 'github_id', url: 'https://github.com/githubjigalooru/maven-web-application.git'   
+            }
+        }
+        stage("build_artifact") {
+            steps {
+             sh "mvn clean package"   
+            }
+        }
+        stage("docker test") {
+         steps {
+           sh "docker --version"
+           sh "echo docker is installed"
+           }
+          }
+         stage("build_docker_image"){
+           steps {
+		     script {
+			   dockerimage = docker.build imagename
+               }
+             }
+        
+          }
+  }
+}
+
+/*
+
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
+pipeline {
+    agent any 
+    tools {
+    maven 'Maven_Home.3.6.3'
+    dockerTool 'docker'
+    }
     stages {
         stage("scm_checkout") {
            steps {
@@ -35,3 +77,6 @@ pipeline {
         
     }
 }
+
+
+*/
