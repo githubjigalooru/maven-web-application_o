@@ -1,12 +1,8 @@
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
 pipeline {
-    agent {
-    label "slave"
-    }
-    
-   environment {
-        PATH = "/home/ubuntu/jenkins2slave/tools/hudson.tasks.Maven_MavenInstallation/Maven_Home.3.6.3/bin:$PATH"
-
+    agent any 
+    tools {
+    maven 'Maven_Home.3.6.3'
     }
     stages {
         stage("scm_checkout") {
@@ -16,8 +12,7 @@ pipeline {
         }
         stage("build_artifact") {
             steps {
-             sh "mvn clean package"
-                
+             sh "mvn clean package"   
             }
         }
         stage("docker test") {
@@ -31,29 +26,30 @@ pipeline {
              sh "mvn clean deploy"
             }
         }*/
-    /*      steps {
-              sh "docker build -t ravikumara0004/app2 ."
+         stage("build_docker_image"){
+           steps {
+              sh "docker build -t ravikumara0004/app2:${BUIL_NUMBER} ."
             }
         }
-       stage("Image_push_dockerhub") {
+     /*  stage("Image_push_dockerhub") {
             steps {
             withCredentials([usernameColonPassword(credentialsId: 'dockerhub_ID', variable: 'dockerhub_username_pwd')]) {
-           // sh "docker login -u ravikumara0004 -p ${docker}"
-             //}
-               //withCredentials([string(credentialsId: 'docker', variable: 'docker')]){
+            
+             }
+               withCredentials([string(credentialsId: 'docker', variable: 'docker')]){
                 
-               // }
+                }
               sh "docker push ravikumara0004/app2:${BUILD_NUMBER}"
                } 
             }
-        }
+        }*/
         stage("container_run") {
             steps {
                sh "docker rm -f container2 || true"
                sh "docker run -d -p 8080:8080 --name container2 ravikumara0004/app2:${BUILD_NUMBER}"
                 }
                 
-        }   */
+        }   
         
     }
 }
