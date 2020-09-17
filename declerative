@@ -27,14 +27,13 @@ pipeline {
            sh "echo docker is installed"
            }
           }
-       /*  stage("build_docker_image"){
+       stage("build_docker_image"){
            steps {
-		     script {
-			   dockerimage = docker.build imagename
-               }
-             }
-        
-          }*/
+               script {
+	          dockerimage = docker.build imagename
+                  }
+                }
+          }
   }
 }
 
