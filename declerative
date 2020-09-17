@@ -5,7 +5,7 @@ pipeline {
     maven 'Maven_Home.3.6.3'
     dockerTool 'docker'
     }
-	environment{
+    environment {
 	imagename = amruth0005/app1
 	registryCredential = "Ravikj005@"
 	dockerimage = ""
