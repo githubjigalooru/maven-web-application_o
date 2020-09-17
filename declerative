@@ -27,12 +27,11 @@ pipeline {
            sh "echo docker is installed"
            }
           }
-       stage("build_docker_image"){
-           steps {
-               script {
-	          dockerimage = docker.build imagename
-                  }
-                }
+       stage ("deploy to tomcat") {
+         steps {
+	   deploy adapters: [tomcat9(credentialsId: 'tomcat_iD', path: '', url: 'http://35.154.226.16:8282/')], contextPath: '/application', war: '**/*.war'
+                  
+             }
           }
   }
 }
