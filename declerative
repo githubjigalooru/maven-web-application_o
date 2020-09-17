@@ -26,12 +26,12 @@ pipeline {
             steps {
              sh "mvn clean deploy"
             }
-        }*/
+        }
          stage("build_docker_image"){
            steps {
               sh "docker build -t amruth0005/app1:${BUIL_NUMBER} ."
             }
-        }
+        }*/
         
     }
 }
