@@ -3,6 +3,7 @@ pipeline {
     agent any 
     tools {
     maven 'Maven_Home.3.6.3'
+    dockerTool 'docker'
     }
     stages {
         stage("scm_checkout") {
