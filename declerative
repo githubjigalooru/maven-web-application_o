@@ -28,7 +28,7 @@ pipeline {
         }*/
          stage("build_docker_image"){
            steps {
-              sh "docker build -t ravikumara0004/app2:${BUIL_NUMBER} ."
+              sh "docker build -t amruth0005/app1:${BUIL_NUMBER} ."
             }
         }
         
