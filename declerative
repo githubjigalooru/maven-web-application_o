@@ -31,25 +31,6 @@ pipeline {
               sh "docker build -t ravikumara0004/app2:${BUIL_NUMBER} ."
             }
         }
-     /*  stage("Image_push_dockerhub") {
-            steps {
-            withCredentials([usernameColonPassword(credentialsId: 'dockerhub_ID', variable: 'dockerhub_username_pwd')]) {
-            
-             }
-               withCredentials([string(credentialsId: 'docker', variable: 'docker')]){
-                
-                }
-              sh "docker push ravikumara0004/app2:${BUILD_NUMBER}"
-               } 
-            }
-        }*/
-        stage("container_run") {
-            steps {
-               sh "docker rm -f container2 || true"
-               sh "docker run -d -p 8080:8080 --name container2 ravikumara0004/app2:${BUILD_NUMBER}"
-                }
-                
-        }   
         
     }
 }
