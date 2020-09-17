@@ -6,7 +6,7 @@ pipeline {
     dockerTool 'docker'
     }
     environment {
-	imagename = amruth0005/app1
+	imagename = "amruth0005/app1"
 	registryCredential = "Ravikj005@"
 	dockerimage = ""
 	}
