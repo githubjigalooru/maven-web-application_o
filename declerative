@@ -29,17 +29,17 @@ pipeline {
           }
        stage ("deploy to tomcat") {
          steps {
-	   deploy adapters: [tomcat9(credentialsId: 'tomcat_iD', path: '', url: 'http://35.154.226.16:8282/')], contextPath: '/application', war: '**/*.war'
+	   deploy adapters: [tomcat9(credentialsId: 'tomcat_iD', path: '', url: 'http://15.206.179.221:8282/')], contextPath: '/application1', war: '**/*.war'
                   
              }
           }
-      stage ("dockerimage_build") {
+ /*     stage ("dockerimage_build") {
         steps {	 
 	 script {
                     def customImage = docker.build("amruth0005/mavenpro:${env.BUILD_ID}")
                   }
 	    }
-	 }
+	 } */
   }
 }
 
