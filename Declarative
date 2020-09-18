@@ -13,7 +13,8 @@ pipeline {
         stage("build_artifact") {
             steps {
              sh "mvn clean install"
-                
+             sh "echo build sucessfully completed"
+	     sh "echo second commit"   
             }
         }
 /*        stage("push_artifact_to_Nexus"){
