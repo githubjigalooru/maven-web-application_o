@@ -16,11 +16,12 @@ pipeline {
                 
             }
         }
-        stage("push_artifact_to_Nexus"){
+/*        stage("push_artifact_to_Nexus"){
             steps {
              sh "mvn clean deploy"
             }
         }
+
         stage("build_image") {
             steps {
               sh "docker build -t ravikumara0004/app2:${BUILD_NUMBER} ."
@@ -41,5 +42,6 @@ pipeline {
                 }
                 
         }
+*?
     }
 }
