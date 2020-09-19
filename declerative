@@ -31,7 +31,7 @@ pipeline {
                 
             }
         }
-        stage(dockerimage+pull") {
+        stage("dockerimage+pull") {
           steps {
           sshagent(['dockerswarm']) {
           sh label: '', script: 'ssh -o StrictHostKeyChecking=no ubuntu@35.154.243.11'
