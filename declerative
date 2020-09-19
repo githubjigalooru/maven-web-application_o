@@ -35,7 +35,7 @@ pipeline {
           steps {
           sshagent(['dockerswarm']) {
           sh label: '', script: 'ssh -o StrictHostKeyChecking=no ubuntu@35.154.243.11 docker rmi ravikumara0004/application:${BUILD_NUMBER} || true'
-	  sh label: '', script: 'ubuntu@35.154.243.11 docker run --name firstcont -d -p 8080:8080 --mode global --replicas 3 ravikumara0004/application:${BUILD_NUMBER}'
+	  sh label: '', script: 'ubuntu@35.154.243.11 docker run -d -p 8080:8080 --name cont ravikumara0004/application:${BUILD_NUMBER}'
 	  }
 	  }
        }
