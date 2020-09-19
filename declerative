@@ -36,7 +36,7 @@ pipeline {
           sshagent(['dockerswarm']) {
           sh label: '', script: 'ssh -o StrictHostKeyChecking=no ubuntu@35.154.243.11 docker service rm applli ravikumara0004/application || true'
 	  sh label: '', script: 'ubuntu@35.154.243.11 docker service create applli -d -p 8080:8080 --mode global --replicas 3 ravikumara0004/application
-	  
+	  }
 	  }
        }
        
