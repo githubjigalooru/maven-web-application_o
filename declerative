@@ -18,7 +18,7 @@ pipeline {
         }
         stage("docker image create") {
             steps {
-            sh label: '', script: 'docker build -t ravikumara0004/application:${BUILD_NUMBER} .'    
+            sh label: '', script: 'docker build -t ravikumara0004/application .'    
             
             }
         }
@@ -27,14 +27,14 @@ pipeline {
             withCredentials([string(credentialsId: 'dock_pass_ID', variable: 'docker_hub_cred')]) {
             sh label: '', script: 'docker login -u ravikumara0004 -p ${docker_hub_cred}'
             }
-            sh label: '', script: 'docker push ravikumara0004/application:${BUILD_NUMBER}'
+            sh label: '', script: 'docker push ravikumara0004/application'
                 
             }
         }
         stage("dockerimage+pull") {
           steps {
           sshagent(['dockerswarm']) {
-          sh label: '', script: 'ssh -o StrictHostKeyChecking=no ubuntu@35.154.243.11'
+          sh label: '', script: 'ssh -o StrictHostKeyChecking=no ubuntu@35.154.243.11 docker rmi ravikumara0004/application || true'
           }
 	      sh label: '', script: 'docker pull ravikumara0004/application'
 	       }
